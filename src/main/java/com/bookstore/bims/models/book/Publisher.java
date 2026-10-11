@@ -13,6 +13,7 @@ import lombok.*;
 @Table(name = "publisher", schema = "book")
 public class Publisher {
     @Id
+    @Column(name = "publisher_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 

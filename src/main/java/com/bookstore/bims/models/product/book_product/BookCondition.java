@@ -17,7 +17,7 @@ public class BookCondition {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Size(min = 2, max = 10)
     @NotBlank
+    @Size(min = 2, max = 10)
     private String conditionName;
 }

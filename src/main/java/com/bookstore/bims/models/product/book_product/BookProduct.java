@@ -12,19 +12,14 @@ import lombok.*;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "book_product", schema = "product")
 public class BookProduct extends Product {
     @NotNull
-    @ManyToOne()
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "condition_id", nullable = false)
     private BookCondition bookCondition;
 
     @NotNull
-    @OneToOne()
+    @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "book_id", nullable = false)
     private Book book;
-
-    /*
-        book review Many to Many with secondary table
-     */
 }

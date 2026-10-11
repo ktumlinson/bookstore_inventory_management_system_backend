@@ -1,4 +1,4 @@
-package com.bookstore.bims.models.product.book_product;
+package com.bookstore.bims.models.product;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.DecimalMax;
@@ -11,17 +11,14 @@ import lombok.*;
 @Getter
 @Setter
 @Builder
-@AllArgsConstructor
 @NoArgsConstructor
-@Table(name = "book_product_review", schema = "book_product")
-public class BookProductReview {
+@AllArgsConstructor
+@Table(name = "review", schema = "product")
+public class Review {
     @Id
+    @Column(name = "review_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
-
-    /*
-        needs book product here
-     */
+    private Long reviewId;
     /*
         needs customer id
      */
@@ -33,4 +30,8 @@ public class BookProductReview {
     @Column(name = "review_text")
     @Size(min = 10, max = 500)
     private String reviewText;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "product_id", nullable = false)
+    private Product product;
 }

@@ -15,6 +15,7 @@ import java.util.Set;
 @Table(name = "series", schema = "book")
 public class Series {
     @Id
+    @Column(name = "series_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 

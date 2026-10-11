@@ -9,6 +9,7 @@ import jakarta.persistence.TemporalType;
 import org.springframework.http.HttpStatus;
 
 import java.util.Date;
+import java.util.Set;
 import java.util.concurrent.Flow;
 
 @Entity
@@ -24,6 +25,7 @@ import java.util.concurrent.Flow;
 })
 public class Book {
     @Id
+    @Column(name = "book_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
@@ -54,19 +56,21 @@ public class Book {
     @Column(name = "image_location", nullable = false)
     private String imageLocation;
 
-    @ManyToOne()
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "publisher_id", nullable = false)
     private Publisher publisher;
 
-    @ManyToOne()
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "series_id", nullable = true)
     private Series series;
 
-    @ManyToOne()
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "cover_type_id", nullable = false)
     private CoverType coverType;
 
-    /*
-        Many to Many with Author book that makes a secondary table
-     */
+    @ManyToMany(mappedBy = "books")
+    private Set<Genre> genres;
+
+    @ManyToMany(mappedBy = "books")
+    private Set<Author> authors;
 }

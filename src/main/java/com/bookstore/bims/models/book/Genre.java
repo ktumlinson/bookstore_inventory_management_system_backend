@@ -15,11 +15,12 @@ import java.util.Set;
 @Table(name = "genre", schema = "book")
 public class Genre {
     @Id
+    @Column(name = "genre_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "genre_name", nullable = false)
     @Size(min = 2, max = 100)
+    @Column(name = "genre_name", nullable = false)
     private String genreName;
 
     @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
