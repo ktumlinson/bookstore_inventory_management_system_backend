@@ -32,7 +32,7 @@ public abstract class Product {
 
     @Min(0)
     @NotNull
-    private Integer quantity;
+    private int quantity;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "product_type_id", nullable = false)
@@ -45,7 +45,8 @@ public abstract class Product {
     @NotBlank
     private String sku = productType.getSku_prefix()+id;
 
-    @OneToMany(mappedBy = "product", cascade = CascadeType.ALL, orphanRemoval = true)
-    @Column(nullable = true)
-    private Set<Review> reviews;
+    // Need to refactor this part for the new api-gateway way
+//    @OneToMany(mappedBy = "product", cascade = CascadeType.ALL, orphanRemoval = true)
+//    @Column(nullable = true)
+//    private Set<Review> reviews;
 }

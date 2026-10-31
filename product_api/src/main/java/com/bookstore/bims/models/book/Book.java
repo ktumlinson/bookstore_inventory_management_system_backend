@@ -48,9 +48,8 @@ public class Book {
     @Column(name = "page_count", nullable = false)
     private int pageCount;
 
-    @Temporal(TemporalType.DATE)
     @Column(name = "publish_date", nullable = false)
-    private Date publishDate;
+    private java.time.LocalDate publishDate;
 
     @NotBlank
     @Column(name = "image_location", nullable = false)

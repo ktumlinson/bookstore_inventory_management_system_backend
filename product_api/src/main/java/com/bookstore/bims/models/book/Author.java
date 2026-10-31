@@ -14,7 +14,7 @@ import java.util.Set;
 @NoArgsConstructor
 @AllArgsConstructor
 @Table(name = "author", schema = "book", uniqueConstraints = {
-
+    @UniqueConstraint(name = "unique_author",columnNames = {"first_name", "last_name"})
 })
 
 public class Author {
